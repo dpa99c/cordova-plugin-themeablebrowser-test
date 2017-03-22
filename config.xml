@@ -24,5 +24,5 @@
         <allow-intent href="itms-apps:*" />
     </platform>
     <plugin name="cordova-plugin-inappbrowser" spec="~1.7.0" />
-    <plugin name="cordova-plugin-themeablebrowser" spec="..\cordova-plugin-themeablebrowser" />
+    <plugin name="cordova-plugin-themeablebrowser" spec="https://github.com/dpa99c/cordova-plugin-themeablebrowser" />
 </widget>
