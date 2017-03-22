@@ -25,4 +25,11 @@
     </platform>
     <plugin name="cordova-plugin-inappbrowser" spec="~1.7.0" />
     <plugin name="cordova-plugin-themeablebrowser" spec="https://github.com/dpa99c/cordova-plugin-themeablebrowser" />
+    <config-file parent="NSPhotoLibraryUsageDescription" platform="ios" target="*-Info.plist">
+        <string>This app requires photo library access to allow you to upload photos.</string>
+    </config-file>
+    <config-file parent="NSCameraUsageDescription" platform="ios" target="*-Info.plist">
+        <string>This app requires camera access to allow you to take and upload photos.</string>
+    </config-file>
+    <plugin name="cordova-custom-config" spec="~3.1.2" />
 </widget>
