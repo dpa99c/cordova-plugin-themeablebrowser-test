@@ -1,5 +1,7 @@
-function onDeviceReady(){
-    cordova.ThemeableBrowser.open('http://www.plupload.com/examples', '_blank', {
+var testUrl = 'http://www.plupload.com/examples';
+
+function openThemeableBrowser(){
+    cordova.ThemeableBrowser.open(testUrl, '_blank', {
         statusbar: {
             color: '#ffffffff'
         },
@@ -25,4 +27,11 @@ function onDeviceReady(){
     });
 }
 
+function openInAppBrowser(){
+    cordova.InAppBrowser.open(testUrl, '_blank', 'location=yes');
+}
+
+function onDeviceReady(){
+    console.log("deviceready");
+}
 document.addEventListener('deviceready', onDeviceReady, false);
