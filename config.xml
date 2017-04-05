@@ -7,8 +7,11 @@
     <author email="dev@cordova.apache.org" href="http://cordova.io">
         Apache Cordova Team
     </author>
+
     <content src="index.html" />
+
     <plugin name="cordova-plugin-whitelist" spec="1" />
+
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -16,20 +19,22 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
+
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
-        <config-file parent="NSPhotoLibraryUsageDescription" platform="ios" target="*-Info.plist">
-            <string>This app requires photo library access to allow you to upload photos.</string>
-        </config-file>
-        <config-file parent="NSCameraUsageDescription" platform="ios" target="*-Info.plist">
-            <string>This app requires camera access to allow you to take and upload photos.</string>
-        </config-file>
+
+        <allow-navigation href="http://localhost:8080/*"/>
+        <feature name="CDVWKWebViewEngine">
+            <param name="ios-package" value="CDVWKWebViewEngine" />
+        </feature>
+        <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
     </platform>
     <plugin name="cordova-plugin-inappbrowser" spec="~1.7.0" />
     <plugin name="cordova-plugin-themeablebrowser" spec="https://github.com/dpa99c/cordova-plugin-themeablebrowser" />
-    <plugin name="cordova-custom-config" spec="~3.1.2" />
+    <plugin name="cordova-plugin-wkwebview-engine" spec="https://github.com/driftyco/cordova-plugin-wkwebview-engine.git" />
 </widget>
