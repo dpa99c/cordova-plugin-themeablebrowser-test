@@ -1,0 +1,21 @@
+{
+  "name": "io.cordova.hellocordova",
+  "version": "1.0.0",
+  "displayName": "HelloCordova",
+  "cordova": {
+    "platforms": [
+      "android"
+    ],
+    "plugins": {
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-themeablebrowser": {},
+      "cordova-custom-config": {}
+    }
+  },
+  "dependencies": {
+    "cordova-android": "latest",
+    "cordova-plugin-whitelist": "1",
+    "cordova-plugin-themeablebrowser": "https://github.com/dpa99c/cordova-plugin-themeablebrowser#android_close_button",
+    "cordova-custom-config": "~3.1.2"
+  }
+}
