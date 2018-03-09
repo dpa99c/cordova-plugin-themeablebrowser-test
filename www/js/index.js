@@ -1,4 +1,4 @@
-var testUrl = 'http://www.plupload.com/examples';
+var testUrl = 'iab_content_page.html';
 
 function openThemeableBrowser(){
     cordova.ThemeableBrowser.open(testUrl, '_blank', {
@@ -15,15 +15,17 @@ function openThemeableBrowser(){
         },
         backButtonCanClose: true
     }).addEventListener('backPressed', function(e) {
-        console.log('back pressed');
+        log('back pressed');
     }).addEventListener('helloPressed', function(e) {
-        console.log('hello pressed');
+        log('hello pressed');
     }).addEventListener('sharePressed', function(e) {
-        console.log(e.url);
+        log(e.url);
     }).addEventListener(cordova.ThemeableBrowser.EVT_ERR, function(e) {
-        console.error(e.message);
+        error(e.message);
     }).addEventListener(cordova.ThemeableBrowser.EVT_WRN, function(e) {
-        console.warn(e.message);
+        warn(e.message);
+    }).addEventListener('message', function(e) {
+        log("Message received: " + JSON.stringify(e));
     });
 }
 
@@ -31,7 +33,22 @@ function openInAppBrowser(){
     cordova.InAppBrowser.open(testUrl, '_blank', 'location=yes');
 }
 
+function log(msg) {
+    $('#log').append("<p>" + msg + "</p>");
+    console.log(msg);
+}
+
+function warn(msg){
+    log("WARN: " + msg);
+    console.warn(msg);
+}
+
+function error(msg){
+    log("ERROR: " + msg);
+    console.error(msg);
+}
+
 function onDeviceReady(){
-    console.log("deviceready");
+    log("deviceready");
 }
 document.addEventListener('deviceready', onDeviceReady, false);
