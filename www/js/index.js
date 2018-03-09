@@ -1,5 +1,5 @@
 var testUrl = 'iab_content_page.html';
-var outputEl;
+var outputEl, iab;
 
 function log(msg){
     console.log(msg);
@@ -20,21 +20,35 @@ function logToPage(msg){
     outputEl.innerHTML += '<p>' + msg + '</p>';
 }
 
-function onLoadEvent(name, browserName) {
-    log(browserName + " load event: " + name);
+function onLoadEvent(name) {
+    log("load event: " + name);
+    if(name === "loadstart"){
+        onIABLoaded();
+    }
 }
 
-function addLoadEventListeners(iab, browserName){
-    iab.addEventListener("loadstart", onLoadEvent.bind(this, "loadstart", browserName));
-    iab.addEventListener("loadstop", onLoadEvent.bind(this, "loadstop", browserName));
-    iab.addEventListener("loaderror", onLoadEvent.bind(this, "loaderror", browserName));
+function addLoadEventListeners(){
+    iab.addEventListener("loadstart", onLoadEvent.bind(this, "loadstart"));
+    iab.addEventListener("loadstop", onLoadEvent.bind(this, "loadstop"));
+    iab.addEventListener("loaderror", onLoadEvent.bind(this, "loaderror"));
     iab.addEventListener('message', function(e) {
         log("Message received: " + JSON.stringify(e));
     });
 }
 
+function onIABLoaded(){
+    iab.executeScript({
+        code: "(function() { " +
+        "return window.location.href;" +
+        "})();"
+    }, function (returnValue) {
+        returnValue = returnValue[0];
+        log("executeScript for window.location returned : " + returnValue);
+    });
+}
+
 function openThemeableBrowser(){
-    var iab = cordova.ThemeableBrowser.open(testUrl, '_blank', {
+    iab = cordova.ThemeableBrowser.open(testUrl, '_blank', {
         statusbar: {
             color: '#ffffffff'
         },
@@ -66,7 +80,7 @@ function openThemeableBrowser(){
     }).addEventListener(cordova.ThemeableBrowser.EVT_WRN, function(e) {
         warn(e.message);
     });
-    addLoadEventListeners(iab, "themable");
+    addLoadEventListeners();
 }
 
 function onDeviceReady(){
