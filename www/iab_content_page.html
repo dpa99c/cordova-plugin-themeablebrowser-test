@@ -3,6 +3,18 @@
     <head>
         <title>IAB Content Page</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+            body{
+                height: 100%;
+                background-color: aquamarine;
+            }
+            .bottom{
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.3)
+            }
+        </style>
     </head>
     <body>
         <h1>IAB Content Page</h1>
@@ -11,6 +23,8 @@
         <p>Webview: <span id="webview"></span></p>
 
         <button onclick="onClickPostMessage()">Post Message</button>
+
+        <div class="bottom">Absolute bottom</div>
 
         <script type="text/javascript">
 
