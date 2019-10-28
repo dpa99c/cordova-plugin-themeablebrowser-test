@@ -13,11 +13,21 @@
             button{
                 margin-bottom: 20px;
             }
+            .app{
+                margin-top: 20px;
+            }
+            .section{
+                margin: 20px 0;
+            }
         </style>
     </head>
     <body>
         <div class="app">
             <button onclick="openThemeableBrowser()">Open Themeable Browser</button>
+            <div class="fullscreen section">
+                <label>Full screen:</label>
+                <input id="fullscreen" type="checkbox"/>
+            </div>
         </div>
         <div id="log"></div>
         <script type="text/javascript" src="cordova.js"></script>

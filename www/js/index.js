@@ -48,6 +48,8 @@ function onIABLoaded(){
 }
 
 function openThemeableBrowser(){
+    var fullscreen = $('#fullscreen')[0].checked;
+
     iab = cordova.ThemeableBrowser.open(testUrl, '_blank', {
         statusbar: {
             color: '#ffffffff'
@@ -74,6 +76,7 @@ function openThemeableBrowser(){
             align: 'right',
             event: 'closePressed'
         },
+        fullscreen: fullscreen,
         backButtonCanClose: true
     }).addEventListener(cordova.ThemeableBrowser.EVT_ERR, function(e) {
         error(e.message);
