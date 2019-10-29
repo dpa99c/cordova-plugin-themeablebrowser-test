@@ -1,6 +1,63 @@
 var testUrl = 'iab_content_page.html';
 var outputEl, iab;
 
+var opts = {
+    A: {
+        statusbar: {
+            color: '#ffffffff'
+        },
+        toolbar: {
+            height: 44,
+            color: '#f0f0f0ff',
+            paddingX: 10
+        },
+        title: {
+            color: '#003264ff',
+            showPageTitle: true,
+            fontSize: 24
+        },
+        backButton: {
+            wwwImage: 'img/chevron-left.png',
+            wwwImageDensity: 4,
+            imagePressed: 'back_pressed',
+            align: 'left',
+            event: 'backPressed'
+        },
+        closeButton: {
+            wwwImage: 'img/cross-mark-on-a-black-circle-background.png',
+            wwwImageDensity: 4,
+            imagePressed: 'close_pressed',
+            align: 'right',
+            event: 'closePressed'
+        },
+        backButtonCanClose: true
+    },
+    B: {
+        statusbar: {
+            color: "#000000",
+            style: "lightcontent"
+        },
+        toolbar: {
+            height: 73,
+            color: "#ff00000",
+            paddingX: 10
+        },
+        title: {
+            color: '#ffffff',
+            showPageTitle: true,
+            fontSize: 24
+        },
+        closeButton: {
+            wwwImage: 'img/cross.png',
+            wwwImageDensity: 12,
+            imagePressed: 'close_pressed',
+            align: 'right',
+            event: 'closePressed'
+        },
+        backButtonCanClose: true
+    }
+};
+
 function log(msg){
     console.log(msg);
     logToPage(msg);
@@ -48,37 +105,9 @@ function onIABLoaded(){
 }
 
 function openThemeableBrowser(){
-    var fullscreen = $('#fullscreen')[0].checked;
-
-    iab = cordova.ThemeableBrowser.open(testUrl, '_blank', {
-        statusbar: {
-            color: '#ffffffff'
-        },
-        toolbar: {
-            height: 44,
-            color: '#f0f0f0ff'
-        },
-        title: {
-            color: '#003264ff',
-            showPageTitle: true
-        },
-        backButton: {
-            wwwImage: 'img/chevron-left.png',
-            wwwImageDensity: 4,
-            imagePressed: 'back_pressed',
-            align: 'left',
-            event: 'backPressed'
-        },
-        closeButton: {
-            wwwImage: 'img/cross-mark-on-a-black-circle-background.png',
-            wwwImageDensity: 4,
-            imagePressed: 'close_pressed',
-            align: 'right',
-            event: 'closePressed'
-        },
-        fullscreen: fullscreen,
-        backButtonCanClose: true
-    }).addEventListener(cordova.ThemeableBrowser.EVT_ERR, function(e) {
+    var iabOpts = opts[$('#opts').val()];
+    iabOpts.fullscreen = $('#fullscreen')[0].checked;
+    iab = cordova.ThemeableBrowser.open(testUrl, '_blank', iabOpts).addEventListener(cordova.ThemeableBrowser.EVT_ERR, function(e) {
         error(e.message);
     }).addEventListener(cordova.ThemeableBrowser.EVT_WRN, function(e) {
         warn(e.message);
