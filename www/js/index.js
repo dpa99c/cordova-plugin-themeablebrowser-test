@@ -1,5 +1,9 @@
-var testUrl = 'iab_content_page.html';
 var outputEl, iab;
+
+var testUrl = {
+  'page': 'iab_content_page.html',
+  'pdf': 'test.pdf'
+};
 
 var opts = {
     A: {
@@ -105,9 +109,10 @@ function onIABLoaded(){
 }
 
 function openThemeableBrowser(){
+    var url = testUrl[$('#url').val()];
     var iabOpts = opts[$('#opts').val()];
     iabOpts.fullscreen = $('#fullscreen')[0].checked;
-    iab = cordova.ThemeableBrowser.open(testUrl, '_blank', iabOpts).addEventListener(cordova.ThemeableBrowser.EVT_ERR, function(e) {
+    iab = cordova.ThemeableBrowser.open(url, '_blank', iabOpts).addEventListener(cordova.ThemeableBrowser.EVT_ERR, function(e) {
         error(e.message);
     }).addEventListener(cordova.ThemeableBrowser.EVT_WRN, function(e) {
         warn(e.message);
