@@ -28,6 +28,6 @@
         </feature>
         <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
     </platform>
-    <plugin name="cordova-plugin-themeablebrowser" spec="https://github.com/dpa99c/cordova-plugin-themeablebrowser" />
+    <plugin name="cordova-plugin-themeablebrowser" spec="https://github.com/dpa99c/cordova-plugin-themeablebrowser#wkwebview" />
     <engine name="android" spec="latest" />
 </widget>
