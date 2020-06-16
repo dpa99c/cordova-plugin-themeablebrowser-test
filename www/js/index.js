@@ -9,7 +9,7 @@ var toc = "WMR";
 var tocSettings = {
     SR: {
         "brandcolour": "#0e3271",
-        "statusbarcolour": "#001E4F"
+        "statusbarcolour": "#001E4F",
     },
     WMR: {
         "brandcolour": "#3C1053",
@@ -22,7 +22,8 @@ var opts = {};
 function createIabOptions(isIos){
     opts.A = {
         statusbar: {
-            color: settings.statusbarcolour
+            color: settings.statusbarcolour,
+            style: "lightcontent"
         },
         toolbar: {
             height: 73,
@@ -46,7 +47,8 @@ function createIabOptions(isIos){
     };
     opts.B = {
         statusbar: {
-            color: settings.statusbarcolour
+            color: settings.statusbarcolour,
+            style: "darkcontent"
         },
         toolbar: {
             height: 73,
