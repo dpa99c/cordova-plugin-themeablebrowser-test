@@ -13,11 +13,11 @@
     }
   },
   "dependencies": {
-    "cordova-android": "^8.1.0",
-    "cordova-ios": "^5.1.1"
+    "cordova-android": "^9.0.0",
+    "cordova-ios": "^6.1.0"
   },
   "devDependencies": {
-    "cordova-plugin-whitelist": "1",
+    "cordova-plugin-whitelist": "^1.0.0",
     "cordova-plugin-themeablebrowser": "https://github.com/dpa99c/cordova-plugin-themeablebrowser#wkwebview"
   }
 }
