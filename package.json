@@ -12,9 +12,10 @@
     }
   },
   "dependencies": {
-    "cordova-ios": "^5.0.1"
+    
   },
   "devDependencies": {
+    "cordova-ios": "^6.1.0",
     "cordova-android": "^10.0.1",
     "cordova-plugin-themeablebrowser": "https://github.com/dpa99c/cordova-plugin-themeablebrowser"
   }

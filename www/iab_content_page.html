@@ -6,7 +6,11 @@
         <style type="text/css">
             body{
                 height: 100%;
+                margin: 0;
                 background-color: aquamarine;
+            }
+            .content{
+                padding: 8px;
             }
             .top, .bottom{
                 position: absolute;
@@ -23,12 +27,15 @@
         </style>
     </head>
     <body>
-        <h1>IAB Content Page</h1>
+        <div class="content">
 
-        <p>Platform: <span id="platform"></span></p>
-        <p>Webview: <span id="webview"></span></p>
+            <h1>IAB Content Page</h1>
 
-        <button onclick="onClickPostMessage()">Post Message</button>
+            <p>Platform: <span id="platform"></span></p>
+            <p>Webview: <span id="webview"></span></p>
+
+            <button onclick="onClickPostMessage()">Post Message</button>
+        </div>
 
         <div class="top">Absolute top</div>
         <div class="bottom">Absolute bottom</div>
