@@ -1,11 +1,8 @@
 var outputEl, iab;
 
 var testUrl = {
-  'page': 'iab_content_page.html',
-  'pdf': 'test.pdf'
+  'page': 'https://dpa99c.github.io/cordova-plugin-inappbrowser-test/iab_content/iab.html'
 };
-
-var externalUrl = "https://dpa99c.github.io/cordova-plugin-inappbrowser-test/iab_content/iab.html";
 
 var toc = "WMR";
 var tocSettings = {
@@ -129,7 +126,7 @@ function addLoadEventListeners(){
 
 function onPressOpenBrowser(url, e){
     window.open = cordova.ThemeableBrowser.open;
-    window.open(externalUrl, '_system');
+    window.open(testUrl.page, '_system');
 }
 
 function onIABLoaded(){
