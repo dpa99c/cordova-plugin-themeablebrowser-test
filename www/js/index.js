@@ -144,13 +144,20 @@ function openThemeableBrowser(){
     var url = testUrl[$('#url').val()];
     var iabOpts = opts[$('#opts').val()];
     iabOpts.fullscreen = $('#fullscreen')[0].checked;
-    iab = cordova.ThemeableBrowser.open(url, '_blank', iabOpts).addEventListener(cordova.ThemeableBrowser.EVT_ERR, function(e) {
-        error(e.message);
+    iab = cordova.ThemeableBrowser.open(url, '_blank', iabOpts)
+    .addEventListener(cordova.ThemeableBrowser.EVT_ERR, function(e) {
+        error(parseMessage(e));
     }).addEventListener(cordova.ThemeableBrowser.EVT_WRN, function(e) {
-        warn(e.message);
+        warn(parseMessage(e));
     });
     addLoadEventListeners();
     iab.addEventListener("btnOpenBrowserPressed", onPressOpenBrowser.bind(this, url));
+}
+
+function parseMessage(e){
+    var msg = e.message;
+    if(e.code && e.code !== "undefined") msg += "; code="+e.code;
+    return msg;
 }
 
 function onDeviceReady(){
